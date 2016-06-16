@@ -37,7 +37,7 @@ gem 'pg', '~> 0.18'
 # PgSearch builds Active Record named scopes that take advantage of PostgreSQL's full text search
 gem 'pg_search', '~> 1.0.5'
 # Flexible authentication solution for Rails with Warden
-gem 'devise','3.4.1'
+gem 'devise', "~> 4.0"
 # Destroy on an Active Record object that it didn't actually destroy
 gem "paranoia", "~> 2.0"
 # Paperclip is intended as an easy file attachment library for Active Record
@@ -51,7 +51,7 @@ gem 'cancancan', '~> 1.10'
 # FriendlyId lets you create pretty URLs and work with human-friendly strings as if they were numeric ids.
 gem 'friendly_id', '~> 5.1.0'
 # Use Schema Plus for generating foreign keys automatically
-gem 'schema_plus', '~> 1.8.7'
+gem 'schema_plus', '~> 2.0.0'
 # Use Seed Bank for having more than one seed file and generating data runing tasks
 gem 'seedbank', '~> 0.3.0'
 # Gem to conveniently handle multiple models in a single form with Rails 3 and jQuery or Prototype.
@@ -64,9 +64,13 @@ gem 'rails-erd'
 # Ruby/Graphviz provides an interface to layout and generate images of directed graphs in a variety of formats (PostScript, PNG, etc.) using GraphViz.
 gem 'ruby-graphviz'
 # Mutes assets pipeline log messages.
-# gem 'quiet_assets'
+gem 'quiet_assets'
 #It's an efficient way to view a list of structured data
 gem 'table_print', '~> 1.5', '>= 1.5.4'
+#Bootstrap
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+gem 'bootstrap_sb_admin_base_v2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
