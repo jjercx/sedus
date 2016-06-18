@@ -1,4 +1,5 @@
 class CollaboratorsController < ActionController::Base
+  before_action :authenticate_collaborator!
   layout "admin"
   add_breadcrumb "Colaboradores", :collaborators_path
   before_action :set_collaborator, only: [:destroy]
@@ -43,7 +44,7 @@ class CollaboratorsController < ActionController::Base
 
   def destroy
     if @collaborator.destroy
-      redirect_to collaborators_path, notice: 'Collaborator was successfully destroyed.'
+      redirect_to collaborators_path, notice: 'Colaborador eliminado exitosamente.'
     end
   end
 

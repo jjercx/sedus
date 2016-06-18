@@ -1,0 +1,89 @@
+<br>
+<%= render "helpers/flash_errors", object: @person %>
+<%= render "helpers/flash_errors", object: @client %>
+<div class="row">
+  <%= form_for @person, url: { controller: "clients", action: action }, method: method do |f| %>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Nombre", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :first_name, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Apellido", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :last_name, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "DNI", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :dni, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Cumpleaños", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :birthday, class: "form-control validate[required]", data: {provide: "datepicker"} %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Telefono", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :phone, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Celular", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :mobile, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Sexo", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :gender, class_enum_for_select("Person","gender"), {prompt: '- Select a category -'}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Estado Civil", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :civil_status, class_enum_for_select("Person","civil_status"), {prompt: '- Select a category -'}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Email", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :email, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <%= f.fields_for :client do |c| %>
+        <div class="form-group col-sm-6">
+          <%= c.label "Tipo", class: "col-sm-4 text-left" %>
+          <div class="col-sm-6">
+            <%= c.select :type, class_enum_for_select("Client","type"), {prompt: '- Select a type -'}, class: "form-control validate[required]" %>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+    <div class="form-group col-sm-11">
+      <div class="form-group col-sm-6">
+      </div>
+      <div class="form-group col-sm-6 text-right">
+        <% unless params[:action] == "show" %>
+          <%= f.submit "Guardar" , class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to 'Cancelar', clients_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -2,6 +2,7 @@ class CreateClients < ActiveRecord::Migration
   def change
     create_table :clients do |t|
       t.references :person
+      t.integer :type, null: false, default: 0
 
       t.string :slug
       t.datetime :deleted_at

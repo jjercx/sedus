@@ -9,6 +9,7 @@ class Person < ActiveRecord::Base
   enum civil_status: [:single, :married, :widower, :divorced]
 
   accepts_nested_attributes_for :collaborator, allow_destroy: true
+  accepts_nested_attributes_for :client, allow_destroy: true
 
   validates :first_name, :last_name, presence: true
   validates_format_of :phone, with: /\A(([ \)])[0-9]{1,3}([ \)]))?([\(][0-9]{1,3}[\)])?([0-9 \.\-]{1,9})\Z/, allow_blank: true
@@ -34,6 +35,27 @@ class Person < ActiveRecord::Base
         return false
       end
     end
+  end
+
+  def save_client
+    if client.nil?
+      errors.add(:client,"must be valid.")
+      prepare_client
+      return false
+    else
+      self.save
+      if self.errors.empty? and self.client.errors.empty?
+        self.client.save #slug
+        return true
+      else
+        prepare_client
+        return false
+      end
+    end
+  end
+
+  def prepare_client
+    _client = client || build_client
   end
 
   def name
