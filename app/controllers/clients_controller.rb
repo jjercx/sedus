@@ -44,7 +44,7 @@ class ClientsController < ActionController::Base
 
   def destroy
     if @client.destroy
-      redirect_to clients_path, notice: 'Cliente eliminado exitosamente.'
+      redirect_to clients_path, notice: 'Cliente eliminado con éxito.'
     end
   end
 

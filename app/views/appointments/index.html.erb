@@ -1,1 +1,45 @@
-<h1>appointments</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="page-header">Citas<%= link_to 'Nueva Cita', new_appointment_path, class: "btn btn-primary pull-right"  %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel-body">
+      <div class="dataTable_wrapper">
+        <% if Appointment.count > 0 %>
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Colaborador</th>
+                <th>Cliente</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @appointments.each_with_index do |a, index| %>
+                <tr class="<%= index.even?? "even": "odd"%> gradeX">
+                  <td><%= a.id %></td>
+                  <td><%= a.collaborator_name %></td>
+                  <td><%= a.client_name %></td>
+                  <td><%= a.type %></td>
+                  <td><%= a.status %></td>
+                  <td>
+                    <%= link_to '<span class="fa fa-list"></span>'.html_safe, appointment_path(a), class: "btn btn-primary btn-circle", data: { "toggle" => "tooltip" }, title: "Mostrar" %>
+                    <%= link_to '<span class="fa fa-pencil"></span>'.html_safe, edit_appointment_path(a), class: "btn btn-warning btn-circle", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                    <%= link_to '<span class="fa fa-close"></span>'.html_safe, appointment_path(a), method: :delete ,data: { toggle: "tooltip", confirm: "¿Está seguro?" }, title: "Borrar", class: "btn btn-danger btn-circle" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>No hay citas registradas.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

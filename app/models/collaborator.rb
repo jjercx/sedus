@@ -11,7 +11,7 @@ class Collaborator < ActiveRecord::Base
   has_many :appointments
   has_many :clients, through: :appointments
 
-  delegate :first_name, :last_name, :dni, :birthday, :mobile, :phone, :address, :gender, :civil_status, to: :person, allow_nil: true
+  delegate :first_name, :last_name, :dni, :birthday, :mobile, :phone, :address, :gender, :civil_status, :name, to: :person, allow_nil: true
   delegate :email, prefix: true, to: :person, allow_nil: true
 
   enum role: [:simple, :admin, :super_admin]

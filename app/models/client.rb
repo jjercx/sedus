@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   has_many :appointments
   has_many :collaborators, through: :appointments
 
-  delegate :first_name, :last_name, :dni, :birthday, :mobile, :phone, :address, :gender, :civil_status, :email, to: :person, allow_nil: true
+  delegate :first_name, :last_name, :dni, :birthday, :mobile, :phone, :address, :gender, :civil_status, :email, :name, to: :person, allow_nil: true
 
   enum type: [:regular, :premiun]
 

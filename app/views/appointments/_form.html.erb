@@ -1,0 +1,52 @@
+<br>
+<%= render "helpers/flash_errors", object: @appointment %>
+<div class="row">
+  <%= form_for @appointment, url: { controller: "appointments", action: action }, method: method do |f| %>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Colaborador", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :collaborator_id, Collaborator.all.map{|c| [c.name,c.id]}, {prompt: "- Selecciona un colaborador -"}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Cliente", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :client_id, Client.all.map{|c| [c.name, c.id]}, {prompt: "- Selecciona un cliente -"}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Estado", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :status, class_enum_for_select("Appointment", "status"), {prompt: "- Selecciona un estado -"}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <%= f.label "Tipo", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.select :type, class_enum_for_select("Appointment", "type"), {prompt: "- Seleecione un tipo -"}, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
+        <%= f.label "Costo", class: "col-sm-4 text-left" %>
+        <div class="col-sm-6">
+          <%= f.text_field :cost, class: "form-control validate[required]" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-11">
+      <div class="form-group col-sm-6">
+      </div>
+      <div class="form-group col-sm-6 text-right">
+        <% unless params[:action] == "show" %>
+          <%= f.submit "Guardar" , class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to 'Cancelar', appointments_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

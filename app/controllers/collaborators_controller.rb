@@ -44,7 +44,7 @@ class CollaboratorsController < ActionController::Base
 
   def destroy
     if @collaborator.destroy
-      redirect_to collaborators_path, notice: 'Colaborador eliminado exitosamente.'
+      redirect_to collaborators_path, notice: 'Colaborador eliminado con éxito.'
     end
   end
 
