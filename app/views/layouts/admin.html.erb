@@ -13,6 +13,10 @@
         <%= render "layouts/navbar" %>
       </nav>
       <div id="page-wrapper">
+        <br>
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs :tag => :li, :separator => "" %>
+        </ol>
         <%= yield %>
       </div>
     </div>

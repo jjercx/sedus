@@ -7,6 +7,11 @@ class CollaboratorsController < ActionController::Base
     @collaborators = Collaborator.all
   end
 
+  def edit
+  end
+
+  
+
   private
 
 end
