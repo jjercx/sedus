@@ -29,12 +29,19 @@ class DeviseCreateCollaborators < ActiveRecord::Migration
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+      t.references :person, null: false
+      t.integer :role, null: false, default: 0
+      t.float :salary
 
+      t.string :slug
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 
     add_index :collaborators, :email,                unique: true
     add_index :collaborators, :reset_password_token, unique: true
+    add_index :collaborators, :deleted_at
+    add_index :collaborators, :slug, unique: true
     # add_index :collaborators, :confirmation_token,   unique: true
     # add_index :collaborators, :unlock_token,         unique: true
   end

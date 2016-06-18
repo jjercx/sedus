@@ -1,4 +1,4 @@
-class CreatePeople < ActiveRecord::Mbefore_action :authenticate_user!igration
+class CreatePeople < ActiveRecord::Migration
   def change
     create_table :people do |t|
       t.string :first_name
@@ -6,10 +6,10 @@ class CreatePeople < ActiveRecord::Mbefore_action :authenticate_user!igration
       t.string :dni
       t.string :phone
       t.string :mobile
-      t.string :skype
       t.string :email
       t.text :address
       t.date :birthday
+      t.integer :gender
       t.integer :civil_status, null: false, default: 0
 
       t.string :slug
