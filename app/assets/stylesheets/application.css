@@ -1,4 +1,4 @@
-/*
+/*id
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap_sb_admin_base_v2
+ *= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */

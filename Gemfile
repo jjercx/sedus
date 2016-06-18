@@ -71,6 +71,7 @@ gem 'table_print', '~> 1.5', '>= 1.5.4'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_sb_admin_base_v2'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -9,14 +9,9 @@
     </a>
     <ul class="dropdown-menu dropdown-user">
       <li>
-        <a href="#"><i class="fa fa-user fa-fw"></i>Perfil</a>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-gear fa-fw"></i> Configuracion</a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+        <%= link_to destroy_collaborator_session_path, method: :delete do %>
+        <i class="fa fa-sign-out fa-fw"></i>Salir
+        <% end %>
       </li>
     </ul>
   </li>
