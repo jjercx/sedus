@@ -31,6 +31,8 @@ class DeviseCreateCollaborators < ActiveRecord::Migration
       # t.datetime :locked_at
       t.references :person, null: false
       t.integer :role, null: false, default: 0
+      t.integer :type, null: false, default: 0
+      t.integer :status, null: false, default: 0
       t.float :salary
 
       t.string :slug

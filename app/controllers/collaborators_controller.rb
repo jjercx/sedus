@@ -4,6 +4,9 @@ class CollaboratorsController < ActionController::Base
   add_breadcrumb "Collaborators", :collaborators_path
 
   def index
+    @collaborators = Collaborator.all
   end
+
+  private
 
 end
