@@ -1,6 +1,7 @@
 class Collaborator < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  belongs_to :person
+  has_many :appointments
+  has_many :clients, through: :appointments
 end
